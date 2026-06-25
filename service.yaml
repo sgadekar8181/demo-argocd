@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
+
 metadata:
-  labels:
-    app: mydep1
-  name: mydep1
+  name: demo-argocd
+
 spec:
+  selector:
+    app: demo-argocd
+
   ports:
   - port: 80
-    protocol: TCP
     targetPort: 80
-  selector:
-    app: mydep1
+
   type: NodePort
-status:
-  loadBalancer: {}

@@ -1,22 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
-  labels:
-    app: mydep1
-  name: mydep1
+  name: demo-argocd
+
 spec:
-  replicas: 1
+  replicas: 2
+
   selector:
     matchLabels:
-      app: mydep1
-  strategy: {}
+      app: demo-argocd
+
   template:
     metadata:
       labels:
-        app: mydep1
+        app: demo-argocd
+
     spec:
       containers:
-      - image: docker.io/httpd
-        name: httpd
-        resources: {}
-status: {}
+      - name: httpd
+        image: httpd:2.4
+
+        ports:
+        - containerPort: 80
+
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/local/apache2/htdocs/index.html
+          subPath: index.html
+
+      volumes:
+      - name: html-volume
+        configMap:
+          name: demo-html

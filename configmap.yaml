@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: demo-html
+
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>ArgoCD Demo</title>
+    </head>
+    <body style="text-align:center;font-family:Arial;margin-top:80px;">
+        <h1>🚀 Welcome to ArgoCD GitOps Demo</h1>
+        <h2>Sachin Gadekar</h2>
+        <h3>Application deployed using Kubernetes + ArgoCD</h3>
+    </body>
+    </html>
